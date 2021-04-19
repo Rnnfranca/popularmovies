@@ -1,0 +1,9 @@
+<resources>
+    <string name="app_name">Filmes Populares</string>
+    <string name="TMDB">TMDB: </string>
+    <string name="releaseDate">Lançamento: </string>
+    <string name="favoriteBtn">Adicionar ao favoritos</string>
+    <string name="errorFetchMovieDetail">Falha ao carregar detalhes do filme</string>
+    <!-- TODO: Remove or change this placeholder text -->
+    <string name="hello_blank_fragment">Hello blank fragment</string>
+</resources>
