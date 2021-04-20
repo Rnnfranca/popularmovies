@@ -1,4 +1,9 @@
 # Popular movies
+
+<p align="center">
+ <img  src="https://user-images.githubusercontent.com/54109228/115387119-9d482880-a1b0-11eb-92e9-e5012f012381.png" height="112" width="112" alt="Popular Movies" />
+</p>
+
 Este projeto foi feito com o objetivo de aprimorar meus conhecimentos da linguagem de programação Kotlin. 
 O aplicativo consiste em consumir a [API](https://developers.themoviedb.org/3/movies/get-popular-movies) TMDB e listar os filmes populares do momento
 
