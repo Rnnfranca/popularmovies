@@ -148,7 +148,6 @@ class MovieDetailFragment : Fragment() {
             // passando o "corpo do callback". É criado uma referencia para a higher-order function
             onSuccess = {
                 // recebendo o filme recuperado da API
-                Log.d("MoveDetailFragment", "$it")
                 onMovieDetailSuccess(it)
             },
             onError = {

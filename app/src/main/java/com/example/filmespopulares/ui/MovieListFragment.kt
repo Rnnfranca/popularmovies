@@ -1,7 +1,6 @@
 package com.example.filmespopulares.ui
 
 import android.os.Bundle
-import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
@@ -36,6 +35,7 @@ class MovieListFragment : Fragment() {
     private lateinit var popularMoviesListAdapter: MoviesListAdapter
 
 
+
     // Fragmento criado, mas a view ainda não foi criada
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -68,12 +68,16 @@ class MovieListFragment : Fragment() {
         _binding = null
     }
 
+
+
+
     fun getPopularMoviesList() {
         recyclerView.layoutManager = LinearLayoutManager(
             context,
             LinearLayoutManager.VERTICAL,
             false
         )
+
 
         popularMoviesListAdapter = MoviesListAdapter(listOf())
         recyclerView.adapter = popularMoviesListAdapter
@@ -91,7 +95,6 @@ class MovieListFragment : Fragment() {
     private fun onError() {
         Toast.makeText(context, "Check the internet", Toast.LENGTH_SHORT).show()
     }
-
 
 
 }

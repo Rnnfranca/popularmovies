@@ -8,9 +8,8 @@
     android:layout_height="match_parent"
     tools:context=".ui.MovieListFragment"
     android:paddingLeft="16dp"
-    android:paddingTop="16dp"
     android:paddingRight="16dp"
-    android:paddingBottom="70dp">
+    android:paddingBottom="50dp">
 
 
     <androidx.recyclerview.widget.RecyclerView

@@ -12,6 +12,7 @@ import com.bumptech.glide.load.resource.bitmap.CenterCrop
 import com.example.filmespopulares.R
 import com.example.filmespopulares.data.MovieEntity
 import com.example.filmespopulares.ui.FavoritesFragmentDirections
+import com.example.filmespopulares.ui.MovieListFragmentDirections
 
 class FavoriteMovieAdapter : RecyclerView.Adapter<FavoriteMovieAdapter.FavoriteViewHolder>() {
 
@@ -24,6 +25,7 @@ class FavoriteMovieAdapter : RecyclerView.Adapter<FavoriteMovieAdapter.FavoriteV
         private var title: TextView = itemView.findViewById(R.id.item_title)
         private var popularity: TextView = itemView.findViewById(R.id.vote_average)
         private var relaseDate: TextView = itemView.findViewById(R.id.release_date)
+        private var moreDetails: TextView = itemView.findViewById(R.id.more_details)
 
 
         fun bind(movie: MovieEntity, holder: FavoriteViewHolder) {
@@ -41,6 +43,11 @@ class FavoriteMovieAdapter : RecyclerView.Adapter<FavoriteMovieAdapter.FavoriteV
             holder.poster.setOnClickListener {
                 val action =
                     FavoritesFragmentDirections.actionFavoritesFragmentToMovieDetailFragment(movieId = movieId)
+                holder.itemView.findNavController().navigate(action)
+            }
+
+            holder.moreDetails.setOnClickListener {
+                val action = FavoritesFragmentDirections.actionFavoritesFragmentToMovieDetailFragment(movieId = movieId)
                 holder.itemView.findNavController().navigate(action)
             }
         }

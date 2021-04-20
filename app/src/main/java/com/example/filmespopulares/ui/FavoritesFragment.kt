@@ -1,7 +1,6 @@
 package com.example.filmespopulares.ui
 
 import android.os.Bundle
-import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
@@ -55,7 +54,6 @@ class FavoritesFragment : Fragment() {
         // data to fill
         mFavoriteMoviesViewModel.readlAllData.observe(viewLifecycleOwner, Observer { movie ->
             adapter.setData(movie)
-            Log.d("FavoriteFragment","getMoviesFromDatabase, $movie")
         })
     }
 

@@ -83,6 +83,13 @@
 
         </LinearLayout>
 
+        <TextView
+            android:id="@+id/more_details"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="SAIBA MAIS"
+            android:textColor="@color/purple"
+            style="@style/LabelTextView"/>
 
     </LinearLayout>
 

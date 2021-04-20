@@ -6,9 +6,8 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     tools:context=".ui.FavoritesFragment"
     android:paddingLeft="16dp"
-    android:paddingTop="16dp"
     android:paddingRight="16dp"
-    android:paddingBottom="70dp">
+    android:paddingBottom="50dp">
 
     <androidx.recyclerview.widget.RecyclerView
         android:id="@+id/recycler_view"

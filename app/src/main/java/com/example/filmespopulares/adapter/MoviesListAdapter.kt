@@ -29,6 +29,7 @@ class MoviesListAdapter(
         private var title: TextView = itemView.findViewById(R.id.item_title)
         private var popularity: TextView = itemView.findViewById(R.id.vote_average)
         private var relaseDate: TextView = itemView.findViewById(R.id.release_date)
+        private var moreDetails: TextView = itemView.findViewById(R.id.more_details)
 
 
         @SuppressLint("SimpleDateFormat")
@@ -52,6 +53,11 @@ class MoviesListAdapter(
             holder.poster.setOnClickListener {
                 val action =
                     MovieListFragmentDirections.actionMovieListFragmentToMovieDetailFragment(movieId = movie.id)
+                holder.itemView.findNavController().navigate(action)
+            }
+
+            holder.moreDetails.setOnClickListener {
+                val action = MovieListFragmentDirections.actionMovieListFragmentToMovieDetailFragment(movieId = movie.id)
                 holder.itemView.findNavController().navigate(action)
             }
 
