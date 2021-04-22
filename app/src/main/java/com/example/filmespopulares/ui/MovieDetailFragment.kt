@@ -111,7 +111,8 @@ class MovieDetailFragment : Fragment() {
 
     private fun changeButtonContent(existFavorite: Boolean) {
         if (existFavorite) {
-            binding.favoriteButton.text = "Remover dos favoritos"
+//            binding.favoriteButton.text = "Remover dos favoritos"
+            binding.favoriteButton.text = getString(R.string.favoriteBtnRemove)
             binding.favoriteButton.setCompoundDrawablesWithIntrinsicBounds(
                 R.drawable.ic_button_favorite_filled,
                 0,
@@ -121,7 +122,8 @@ class MovieDetailFragment : Fragment() {
 
 
         } else {
-            binding.favoriteButton.text = "Adicionar aos favoritos"
+//            binding.favoriteButton.text = "Adicionar aos favoritos"
+            binding.favoriteButton.text = getString(R.string.favoriteBtn)
             binding.favoriteButton.setCompoundDrawablesWithIntrinsicBounds(
                 R.drawable.ic_button_favorite_outline,
                 0,
