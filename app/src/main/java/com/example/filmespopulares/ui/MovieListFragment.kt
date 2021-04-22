@@ -4,14 +4,15 @@ import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import android.widget.Toast
 import androidx.fragment.app.Fragment
+import androidx.lifecycle.Observer
+import androidx.lifecycle.ViewModelProvider
+import androidx.lifecycle.lifecycleScope
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
-import com.example.filmespopulares.Repository.MoviesRepository
 import com.example.filmespopulares.adapter.MoviesListAdapter
 import com.example.filmespopulares.databinding.FragmentMovieListBinding
-import com.example.filmespopulares.model.Movie
+import kotlinx.coroutines.launch
 
 
 /**
@@ -31,17 +32,16 @@ class MovieListFragment : Fragment() {
 
     //property para pegar a referencia da recycler view
     private lateinit var recyclerView: RecyclerView
-
     private lateinit var popularMoviesListAdapter: MoviesListAdapter
-
+    private lateinit var mMovieListViewModel: MovieListViewModel
 
 
     // Fragmento criado, mas a view ainda não foi criada
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
+        // habilita a navegação através das opções do menu
         setHasOptionsMenu(true)
     }
-
 
     override fun onCreateView(
         inflater: LayoutInflater,
@@ -57,7 +57,7 @@ class MovieListFragment : Fragment() {
         savedInstanceState: Bundle?
     ) {
         recyclerView = binding.recyclerView
-
+        mMovieListViewModel = ViewModelProvider(this).get(MovieListViewModel::class.java)
 
         // get movies from api
         getPopularMoviesList()
@@ -68,9 +68,6 @@ class MovieListFragment : Fragment() {
         _binding = null
     }
 
-
-
-
     fun getPopularMoviesList() {
         recyclerView.layoutManager = LinearLayoutManager(
             context,
@@ -78,23 +75,21 @@ class MovieListFragment : Fragment() {
             false
         )
 
-
         popularMoviesListAdapter = MoviesListAdapter(listOf())
         recyclerView.adapter = popularMoviesListAdapter
 
-        MoviesRepository.getPopularMovies(
-            onSuccess = ::onPopularMoviesFetched,
-            onError = ::onError
-        )
+        getMovieApi()
+
+        mMovieListViewModel.moviesApi.observe(viewLifecycleOwner, Observer { listMovies ->
+            popularMoviesListAdapter.updateMovies(listMovies)
+        })
     }
 
-    private fun onPopularMoviesFetched(movies: List<Movie>) {
-        popularMoviesListAdapter.updateMovies(movies)
+    private fun getMovieApi() {
+        lifecycleScope.launch {
+            val response = mMovieListViewModel.getMovieApi()
+            mMovieListViewModel._moviesApi.postValue(response.movies)
+        }
     }
-
-    private fun onError() {
-        Toast.makeText(context, "Check the internet", Toast.LENGTH_SHORT).show()
-    }
-
 
 }

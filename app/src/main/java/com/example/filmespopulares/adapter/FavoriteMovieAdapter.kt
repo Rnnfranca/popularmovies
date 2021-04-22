@@ -12,7 +12,6 @@ import com.bumptech.glide.load.resource.bitmap.CenterCrop
 import com.example.filmespopulares.R
 import com.example.filmespopulares.data.MovieEntity
 import com.example.filmespopulares.ui.FavoritesFragmentDirections
-import com.example.filmespopulares.ui.MovieListFragmentDirections
 
 class FavoriteMovieAdapter : RecyclerView.Adapter<FavoriteMovieAdapter.FavoriteViewHolder>() {
 
@@ -68,11 +67,8 @@ class FavoriteMovieAdapter : RecyclerView.Adapter<FavoriteMovieAdapter.FavoriteV
     }
 
     fun setData(movie: List<MovieEntity>) {
-
         this.movieList = movie
         notifyDataSetChanged()
-
-
     }
 
 }

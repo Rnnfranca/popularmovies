@@ -1,13 +1,10 @@
 package com.example.filmespopulares.adapter
 
-import android.annotation.SuppressLint
-import android.os.Build
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.ImageView
 import android.widget.TextView
-import androidx.annotation.RequiresApi
 import androidx.navigation.findNavController
 import androidx.recyclerview.widget.RecyclerView
 import com.bumptech.glide.Glide
@@ -32,8 +29,6 @@ class MoviesListAdapter(
         private var moreDetails: TextView = itemView.findViewById(R.id.more_details)
 
 
-        @SuppressLint("SimpleDateFormat")
-        @RequiresApi(Build.VERSION_CODES.O)
         fun bind(movie: Movie, holder: MovieViewHolder) {
             Glide.with(itemView)
                 .load("https://image.tmdb.org/t/p/original${movie.posterPath}")
@@ -82,7 +77,6 @@ class MoviesListAdapter(
     }
 
 
-    @RequiresApi(Build.VERSION_CODES.O)
     override fun onBindViewHolder(holder: MovieViewHolder, position: Int) {
         holder.bind(movies[position], holder)
     }

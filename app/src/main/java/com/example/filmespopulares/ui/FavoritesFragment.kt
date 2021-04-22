@@ -23,6 +23,7 @@ class FavoritesFragment : Fragment() {
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
+        // enable navigation through options menu
         setHasOptionsMenu(true)
     }
 
