@@ -10,9 +10,9 @@ import androidx.room.PrimaryKey
 data class MovieEntity(
     // these properties are the columns of the table
     @PrimaryKey(autoGenerate = true)
-    val id: Int,
-    val movieId: Int,
-    val title: String,
+    var id: Int,
+    var movieId: Int,
+    var title: String,
     val posterPath: String,
     val releaseDate: String,
     val voteAverage: Float

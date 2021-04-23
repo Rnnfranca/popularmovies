@@ -3,12 +3,16 @@ package com.example.filmespopulares.ui
 import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
+import android.view.View.VISIBLE
 import android.view.ViewGroup
+import android.widget.ImageView
+import android.widget.TextView
 import androidx.fragment.app.Fragment
 import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProvider
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
+import com.example.filmespopulares.R
 import com.example.filmespopulares.adapter.FavoriteMovieAdapter
 import com.example.filmespopulares.databinding.FragmentFavoritesBinding
 
@@ -54,7 +58,15 @@ class FavoritesFragment : Fragment() {
         // observing the live data to change content of view holder only when there is a new
         // data to fill
         mFavoriteMoviesViewModel.readlAllData.observe(viewLifecycleOwner, Observer { movie ->
-            adapter.setData(movie)
+            if (movie.size > 0) {
+                adapter.setData(movie)
+            } else {
+                val imageNoFavorite: ImageView = requireView().findViewById(R.id.image_no_favorite)
+                imageNoFavorite.visibility = VISIBLE
+                val textNoFavorite: TextView = requireView().findViewById(R.id.text_no_favorite)
+                textNoFavorite.visibility = VISIBLE
+            }
+
         })
     }
 

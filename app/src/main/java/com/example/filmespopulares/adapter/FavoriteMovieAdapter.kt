@@ -46,9 +46,12 @@ class FavoriteMovieAdapter : RecyclerView.Adapter<FavoriteMovieAdapter.FavoriteV
             }
 
             holder.moreDetails.setOnClickListener {
-                val action = FavoritesFragmentDirections.actionFavoritesFragmentToMovieDetailFragment(movieId = movieId)
+                val action =
+                    FavoritesFragmentDirections.actionFavoritesFragmentToMovieDetailFragment(movieId = movieId)
                 holder.itemView.findNavController().navigate(action)
             }
+
+
         }
     }
 
@@ -69,6 +72,7 @@ class FavoriteMovieAdapter : RecyclerView.Adapter<FavoriteMovieAdapter.FavoriteV
     fun setData(movie: List<MovieEntity>) {
         this.movieList = movie
         notifyDataSetChanged()
+
     }
 
 }
