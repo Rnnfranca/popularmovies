@@ -3,8 +3,6 @@ package com.example.filmespopulares.adapter
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import android.widget.ImageView
-import android.widget.TextView
 import androidx.navigation.findNavController
 import androidx.recyclerview.widget.RecyclerView
 import com.bumptech.glide.Glide
@@ -12,6 +10,7 @@ import com.bumptech.glide.load.resource.bitmap.CenterCrop
 import com.example.filmespopulares.R
 import com.example.filmespopulares.data.MovieEntity
 import com.example.filmespopulares.ui.FavoritesFragmentDirections
+import kotlinx.android.synthetic.main.list_item.view.*
 
 class FavoriteMovieAdapter : RecyclerView.Adapter<FavoriteMovieAdapter.FavoriteViewHolder>() {
 
@@ -20,32 +19,26 @@ class FavoriteMovieAdapter : RecyclerView.Adapter<FavoriteMovieAdapter.FavoriteV
     class FavoriteViewHolder(itemView: View) : RecyclerView.ViewHolder(itemView) {
 
         private var movieId: Int = 0
-        private val poster: ImageView = itemView.findViewById(R.id.item_image)
-        private var title: TextView = itemView.findViewById(R.id.item_title)
-        private var popularity: TextView = itemView.findViewById(R.id.vote_average)
-        private var relaseDate: TextView = itemView.findViewById(R.id.release_date)
-        private var moreDetails: TextView = itemView.findViewById(R.id.more_details)
-
 
         fun bind(movie: MovieEntity, holder: FavoriteViewHolder) {
 
             Glide.with(itemView)
                 .load("https://image.tmdb.org/t/p/original${movie.posterPath}")
                 .transform(CenterCrop())
-                .into(poster)
+                .into(itemView.item_image)
 
             movieId = movie.movieId
-            title.text = movie.title
-            popularity.text = movie.voteAverage.toString()
-            relaseDate.text = movie.releaseDate
+            itemView.item_title.text = movie.title
+            itemView.vote_average.text = movie.voteAverage.toString()
+            itemView.release_date.text = movie.releaseDate
 
-            holder.poster.setOnClickListener {
+            holder.itemView.item_image.setOnClickListener {
                 val action =
                     FavoritesFragmentDirections.actionFavoritesFragmentToMovieDetailFragment(movieId = movieId)
                 holder.itemView.findNavController().navigate(action)
             }
 
-            holder.moreDetails.setOnClickListener {
+            holder.itemView.more_details.setOnClickListener {
                 val action =
                     FavoritesFragmentDirections.actionFavoritesFragmentToMovieDetailFragment(movieId = movieId)
                 holder.itemView.findNavController().navigate(action)

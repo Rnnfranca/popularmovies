@@ -17,11 +17,5 @@ class MovieListViewModel : ViewModel() {
         return MoviesRepository.getPopularMovies()
     }
 
-//    private fun getMoviesApi() {
-//        viewModelScope.launch(Dispatchers.IO) {
-//            val movieResponse = MoviesRepository.getPopularMovies()
-//            _moviesApi.value = movieResponse.movies
-//        }
-//    }
 
 }

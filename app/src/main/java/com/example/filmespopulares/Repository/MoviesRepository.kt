@@ -32,9 +32,8 @@ object MoviesRepository {
         return api.getPopularMovies(page = page)
     }
 
-    /**
-     * Função para retornar os detalhes do filme com base no id
-     */
+
+    // Função para retornar os detalhes do filme com base no id
     suspend fun getMovieDetail(movieId: Int): Movie {
         return api.getMovieDetail(movieId)
     }

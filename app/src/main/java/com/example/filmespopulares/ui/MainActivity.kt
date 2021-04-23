@@ -24,7 +24,7 @@ class MainActivity : AppCompatActivity() {
             R.id.movieListFragment,
             R.id.favoritesFragment
         ))
-        // pegando a referencia para o navHost
+        // get nav host reference
         val navHostFragment = supportFragmentManager.findFragmentById(R.id.nav_host_fragment) as NavHostFragment
 
         navController = navHostFragment.navController

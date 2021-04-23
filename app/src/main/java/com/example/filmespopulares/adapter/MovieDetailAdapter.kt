@@ -1,7 +1,5 @@
 package com.example.filmespopulares.adapter
 
-import android.os.Build
-import androidx.annotation.RequiresApi
 import com.bumptech.glide.Glide
 import com.bumptech.glide.load.resource.bitmap.CenterCrop
 import com.example.filmespopulares.databinding.FragmentMovieDetailBinding
@@ -14,7 +12,6 @@ class MovieDetailAdapter (
 ) {
 
     // função que recebe a informação e faz o bind
-    @RequiresApi(Build.VERSION_CODES.O)
     fun bind(movie: Movie) {
         Glide.with(binding.itemImage)
             .load("https://image.tmdb.org/t/p/original${movie.posterPath}")
